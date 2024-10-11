@@ -5,5 +5,17 @@
 #include <fstream>
 #include <cstring>
 
-namespace region;
+namespace image{
 
+    Region::Region(): id(), size(), points(){
+
+    }
+
+    void Region::showRegion(){
+
+    }
+
+    Region::~Region(){
+        
+    }
+}
