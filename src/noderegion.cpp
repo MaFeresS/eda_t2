@@ -4,4 +4,7 @@
 #include <stack>
 #include "image/point2D.hpp"
 
-stack<Point2D> stack;
+namespace image{
+    template <class Point2D, class Container = deque<Point2D> > class stack;
+}
+
