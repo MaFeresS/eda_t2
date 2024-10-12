@@ -6,15 +6,15 @@
 namespace image {
 	class NodePoint2D{
 	private:
-		NodePoint2D *Nptr;
+		NodePoint2D *Next;
 		Point2D point;		
 	public:	
 		NodePoint2D();
-		NodePoint2D(Point2D point, NodePoint2D *Nptr);
+		NodePoint2D(Point2D point_, NodePoint2D *Next_);
 		NodePoint2D *getPointer();
-		Point2D *getPoint2D();
-		void setPointer(NodePoint2D *Nptr);
-		void setPoint2D(Point2D point);
+		Point2D getPoint2D();
+		void setPointer(NodePoint2D *Next_);
+		void setPoint2D(Point2D point_);
 		virtual ~NodePoint2D();
 	};
 }
