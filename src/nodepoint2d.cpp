@@ -7,7 +7,7 @@ namespace image {
 
     }
     NodePoint2D::NodePoint2D(Point2D point_, NodePoint2D *Next_):point(point_), Next(Next_){
-        
+
     }
     NodePoint2D *NodePoint2D::getPointer(){
         return Next;
@@ -24,5 +24,4 @@ namespace image {
     NodePoint2D::~NodePoint2D(){
 
     }
-	};
-}
+};
