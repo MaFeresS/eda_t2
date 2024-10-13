@@ -14,7 +14,7 @@ namespace image {
 		NodeRegion* getNext();
 		Region getRegion();
 		void setNext(NodeRegion *Next_);
-		void setRegi(Region *Regi_);	
+		void setRegi(Region Regi_);	
 		virtual ~NodeRegion();	
 	};
 }

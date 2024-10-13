@@ -20,8 +20,8 @@ namespace image{
     void NodeRegion::setNext(NodeRegion *Next_){
         Next=Next_;
     }
-    void NodeRegion::setRegi(Region *Regi_){
-        Regi=*Regi_;
+    void NodeRegion::setRegi(Region Regi_){
+        Regi=Regi_;
     }
     NodeRegion::~NodeRegion(){
         

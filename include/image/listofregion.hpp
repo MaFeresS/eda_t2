@@ -10,6 +10,7 @@ namespace image {
 	public:
 		ListOfRegion();
 		void insertFirst(Region head);
+		void insertLast(Region head);
 		virtual ~ListOfRegion();
 	};
 }
