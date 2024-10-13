@@ -1,18 +1,18 @@
 /*
  Class ListOfRegion
 */
-#include "image/region.hpp"
+#include "image/noderegion.hpp"
 
 namespace image {
 	class ListOfRegion{
 	private:
 		ListOfRegion *Next;
-		Region *Regi;		
+		NodeRegion *Node;		
 	public:
 		ListOfRegion();
-		ListOfRegion(ListOfRegion *Next, Region *Regi);
+		ListOfRegion(ListOfRegion *Next, NodeRegion *Node);
 		void setList(ListOfRegion *Next);
-		void setNode(Region *Regi);	
+		void setNode(NodeRegion *Node);	
 		virtual ~ListOfRegion();
 	};
 }

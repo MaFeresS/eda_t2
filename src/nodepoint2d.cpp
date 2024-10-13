@@ -6,7 +6,7 @@ namespace image {
     NodePoint2D::NodePoint2D(): Next(nullptr), point( Point2D::Point2D()){
 
     }
-    NodePoint2D::NodePoint2D(Point2D point_, NodePoint2D *Next_):point(point_), Next(Next_){
+    NodePoint2D::NodePoint2D(Point2D point_, NodePoint2D *Next_): point(point_), Next(Next_){
 
     }
     NodePoint2D *NodePoint2D::getPointer(){
