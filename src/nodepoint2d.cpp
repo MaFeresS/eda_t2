@@ -1,9 +1,9 @@
 /* implementation of the class NodePoint2D
  */
-#include "nodepoint2d.hpp"
+#include "image/nodepoint2d.hpp"
 
 namespace image {
-    NodePoint2D::NodePoint2D(): Next(nullptr), point( Point2D::Point2D()){
+    NodePoint2D::NodePoint2D(): point(0,0), Next(nullptr){
 
     }
     NodePoint2D::NodePoint2D(Point2D point_, NodePoint2D *Next_): point(point_), Next(Next_){

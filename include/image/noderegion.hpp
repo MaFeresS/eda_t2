@@ -11,10 +11,10 @@ namespace image {
 	public:
 		NodeRegion();
 		NodeRegion(NodeRegion *Next_, Region *Regi_);
-		NodeRegion getNext();
-		Region getRegion();
+		NodeRegion* getNext();
+		Region* getRegion();
 		void setNext(NodeRegion *Next_);
-		void setRegi(Region *Regi_)	
+		void setRegi(Region *Regi_);	
 		virtual ~NodeRegion();	
 	};
 }

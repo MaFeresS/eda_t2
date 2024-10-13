@@ -17,10 +17,10 @@ namespace image{
     Region *NodeRegion::getRegion(){
         return Regi;
     }
-    void NodeRegion::setNext(NodeRegion Next_){
+    void NodeRegion::setNext(NodeRegion *Next_){
         Next=Next_;
     }
-    void NodeRegion::setRegi(Region Regi_){
+    void NodeRegion::setRegi(Region *Regi_){
         Regi=Regi_;
     }
     NodeRegion::~NodeRegion(){
