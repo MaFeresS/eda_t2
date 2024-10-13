@@ -6,13 +6,10 @@
 namespace image {
 	class ListOfRegion{
 	private:
-		ListOfRegion *Next;
-		NodeRegion *Node;		
+		NodeRegion *head;		
 	public:
 		ListOfRegion();
-		ListOfRegion(ListOfRegion *Next, NodeRegion *Node);
-		void setList(ListOfRegion *Next);
-		void setNode(NodeRegion *Node);	
+		void insertFirst(Region head);
 		virtual ~ListOfRegion();
 	};
 }

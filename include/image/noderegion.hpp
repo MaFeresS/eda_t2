@@ -7,12 +7,12 @@ namespace image {
 	class NodeRegion{
 	private:
 		NodeRegion *Next;
-		Region *Regi;		
+		Region Regi;		
 	public:
 		NodeRegion();
-		NodeRegion(NodeRegion *Next_, Region *Regi_);
+		NodeRegion(Region Regi_, NodeRegion *Next_);
 		NodeRegion* getNext();
-		Region* getRegion();
+		Region getRegion();
 		void setNext(NodeRegion *Next_);
 		void setRegi(Region *Regi_);	
 		virtual ~NodeRegion();	
