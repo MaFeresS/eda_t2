@@ -8,7 +8,7 @@ namespace image {
 	private:
 		int id;
 		int size;
-		ListOfPoint2D points;		
+		ListOfPoint2D points;	
 	public:
 		Region();
 		void showRegion();
