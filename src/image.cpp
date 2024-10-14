@@ -1,4 +1,5 @@
 #include "image/image.hpp"
+#include "listofpoint2d.hpp"
 #include <fstream>
 #include <iostream>
 #include <cassert>
@@ -15,7 +16,9 @@ namespace image{
     }
 
     Image::Image(int w, int h, uchar* _data): width(w), height(h), th_value(120), data(_data){
-       threshold();
+        threshold();
+        bool* visited=new bool[w*h];
+        std::memset(visited,false,w*h); //setup of visited array, unique per image
     }
 
     void Image::threshold(){
@@ -81,7 +84,7 @@ namespace image{
         //reading colortable
         char  colors[numcolors*4];
         fin.read(colors, numcolors*4);        
-        if (imagesize == height * width) {            
+        if (imagesize == height * width) {
             char* data = new char[imagesize];
             //read the pixel values
             fin.read(data, imagesize); 
@@ -97,6 +100,19 @@ namespace image{
         }
         assert(im != nullptr);
         return im;
+    }
+
+    image::ListOfPoint2D DFS(image::Point2D start){
+        image::NodePoint2D startNode(start,nullptr);
+        image::ListOfPoint2D pointsInRegion(&startNode);
+        std::stack<Point2D> pointStack;
+        pointStack.push(start);
+        Point2D currentPoint=start;
+        int cord[2]={currentPoint.getX(),currentPoint.getY()};
+        while(!pointStack.empty()){
+            
+        }
+        return pointsInRegion;
     }
 
 }

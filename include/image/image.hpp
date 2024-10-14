@@ -15,10 +15,11 @@ namespace image {
 		int height;
 		int th_value;
 		uchar* data;
+		bool *visited;
 	public:
 		Image();
 		Image(int w, int h);
-		Image(int w, int h, uchar* _data);
+		Image(int w, int h, uchar* _data, bool* visited);
 		void threshold(); 
     	int getValue(int row, int col);
 		void show();
