@@ -19,6 +19,20 @@ namespace image {
         }
     }
 
+    void ListOfRegion::insertLast(Region reg){
+        NodeRegion *node = new NodeRegion(reg,nullptr);
+        if(head == nullptr){
+            head = node;
+        }
+        else{
+            NodeRegion *currentNode = head;
+            while(currentNode ->getNext() != nullptr){
+                currentNode = currentNode->getNext();
+            }
+            currentNode ->setNext(node);
+        }
+    }
+
     ListOfRegion::~ListOfRegion(){
 
     }
