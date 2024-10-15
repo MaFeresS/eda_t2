@@ -122,6 +122,7 @@ namespace image{
                 visitPixel(neighbor.getY(),neighbor.getX());
                 Node.setPoint2D(neighbor);
                 //add Node to listofPoin2D
+                insertLastNode(neighbor);
             }
         }
         return pointsInRegion;

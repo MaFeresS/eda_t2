@@ -7,14 +7,11 @@ namespace image{
     ListOfPoint2D::ListOfPoint2D(): Node(nullptr){
 
     }
-    ListOfPoint2D::ListOfPoint2D(NodePoint2D *Node_): Node(Node_){
-
-    }
 	NodePoint2D *ListOfPoint2D::getNode(){
         return Node;
     }
-	void ListOfPoint2D::insertFirstNode(Point2D Node_){
-        NodePoint2D * node = new NodePoint2D(Node_,nullptr);
+	void ListOfPoint2D::insertFirstNode(Point2D Point_){
+        NodePoint2D * node = new NodePoint2D(Point_,nullptr);
         if(Node == nullptr){
             Node = node;
         }
@@ -23,8 +20,8 @@ namespace image{
             Node = node;
         }
     }
-    void ListOfPoint2D::insertLastNode(Point2D Node_){
-        NodePoint2D * node = new NodePoint2D(Node_,nullptr);
+    void ListOfPoint2D::insertLastNode(Point2D Point_){
+        NodePoint2D * node = new NodePoint2D(Point_,nullptr);
         if(Node == nullptr){
             Node = node;
         }

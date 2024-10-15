@@ -9,7 +9,6 @@ namespace image {
 		NodePoint2D *Node;	
 	public:		
 		ListOfPoint2D();
-		ListOfPoint2D(NodePoint2D *Node_);
 		NodePoint2D *getNode();
 		void insertFirstNode(Point2D Node_);
 		void insertLastNode(Point2D Node_);
