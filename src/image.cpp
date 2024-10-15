@@ -104,27 +104,70 @@ namespace image{
 
     image::ListOfPoint2D DFS(image::Point2D start){
         image::NodePoint2D startNode(start,nullptr);
+        image::NodePoint2D Node();
         image::ListOfPoint2D pointsInRegion(&startNode);
         std::stack<Point2D> pointStack;
         pointStack.push(start);
-        Point2D currentPoint=start;
+        image::Point2D currentPoint;
+        image::Point2D neighbor;
         int cord[2]={currentPoint.getX(),currentPoint.getY()};
         while(!pointStack.empty()){
-            
+            currentPoint=pointStack.top();
+            neighbor=DFSfindNeighbor(currentPoint);
+            if(neighbor.getX()==-1 && neighbor.getY()==-1){
+                pointStack.pop();
+            }
+            else{
+                pointStack.push(neighbor);
+                visitPixel(neighbor.getY(),neighbor.getX());
+                Node.setPoint2D(neighbor);
+                //add Node to listofPoin2D
+            }
         }
         return pointsInRegion;
     }
 
-    int Image::getVisited(int row, int col){
+    bool Image::getVisited(int row, int col){
         int pos = row*width + col;
         return visited[pos];
     }
 
-    image::Point2D DFSfindNeighbor(image::Poit2D current){
+    void Image::visitPixel(int row, int col){
+        int pos = row*width + col;
+        visited[pos]=true;
+    }
+
+    image::Point2D DFSfindNeighbor(image::Poit2D *current){
         int cordCurrent[2]={current.getY(),current.getX()};
+
         if((!getVisited(cord[0]-1,cord[1]-1)) && (getValue(cord[0]-1,cord[1]-1)==1)){
             image::Point2D neighbor(cord[1]-1,cord[0]-1);
         } //check like above for all directions, if neighbor has cord (-1,-1), there is no neighbor.
+        else if((!getVisited(cord[0]-1,cord[1])) && (getValue(cord[0]-1,cord[1])==1)){
+            image::Point2D neighbor(cord[0]-1,cord[1]);
+        }
+        else if((!getVisited(cord[0]-1,cord[1]+1)) && (getValue(cord[0]-1,cord[1]+1)==1)){
+            image::Point2D neighbor(cord[0]-1,cord[1]+1);
+        }
+        else if((!getVisited(cord[0]+1,cord[1]-1)) && (getValue(cord[0]+1,cord[1]-1)==1)){
+            image::Point2D neighbor(cord[0]+1,cord[1]-1);
+        }
+        else if((!getVisited(cord[0]+1,cord[1])) && (getValue(cord[0]+1,cord[1])==1)){
+            image::Point2D neighbor(cord[0]+1,cord[1]);
+        }
+        else if((!getVisited(cord[0]+1,cord[1]+1)) && (getValue(cord[0]+1,cord[1]+1)==1)){
+            image::Point2D neighbor(cord[0]+1,cord[1]+1);
+        }
+        else if((!getVisited(cord[0],cord[1]-1)) && (getValue(cord[0],cord[1]-1)==1)){
+            image::Point2D neighbor(cord[0],cord[1]-1);
+        }
+        else if((!getVisited(cord[0],cord[1]+1)) && (getValue(cord[0],cord[1]+1)==1)){
+            image::Point2D neighbor(cord[0],cord[1]+1);
+        }
+        else{
+            std::cout<<"no neighbor"<<std::endl;
+            image::Point2D neighbor(-1,-1);
+        }
         return neighbor;
     }
 
