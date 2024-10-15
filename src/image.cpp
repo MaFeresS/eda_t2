@@ -115,5 +115,18 @@ namespace image{
         return pointsInRegion;
     }
 
+    int Image::getVisited(int row, int col){
+        int pos = row*width + col;
+        return visited[pos];
+    }
+
+    image::Point2D DFSfindNeighbor(image::Poit2D current){
+        int cordCurrent[2]={current.getY(),current.getX()};
+        if((!getVisited(cord[0]-1,cord[1]-1)) && (getValue(cord[0]-1,cord[1]-1)==1)){
+            image::Point2D neighbor(cord[1]-1,cord[0]-1);
+        } //check like above for all directions, if neighbor has cord (-1,-1), there is no neighbor.
+        return neighbor;
+    }
+
 }
 
