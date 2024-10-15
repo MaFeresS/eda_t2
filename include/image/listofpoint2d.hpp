@@ -10,8 +10,8 @@ namespace image {
 	public:		
 		ListOfPoint2D();
 		NodePoint2D *getNode();
-		void insertFirstNode(Point2D Node_);
-		void insertLastNode(Point2D Node_);
+		void insertFirstNode(Point2D Point_);
+		void insertLastNode(Point2D Point_);
 		virtual ~ListOfPoint2D();
 	};
 }

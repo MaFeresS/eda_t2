@@ -104,7 +104,6 @@ namespace image{
 
     image::ListOfPoint2D DFS(image::Point2D start){
         image::NodePoint2D startNode(start,nullptr);
-        image::NodePoint2D Node();
         image::ListOfPoint2D pointsInRegion(&startNode);
         std::stack<Point2D> pointStack;
         pointStack.push(start);
@@ -120,8 +119,7 @@ namespace image{
             else{
                 pointStack.push(neighbor);
                 visitPixel(neighbor.getY(),neighbor.getX());
-                Node.setPoint2D(neighbor);
-                //add Node to listofPoin2D
+                //add Node to listofPoin2D as Point2D
                 insertLastNode(neighbor);
             }
         }
