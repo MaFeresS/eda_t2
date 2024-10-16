@@ -34,6 +34,7 @@ namespace image{
             }
         }
     }
+    
     int Image::getValue(int row, int col){
         int pos = row*width + col;
         return static_cast<int>(data[pos]);
@@ -122,6 +123,7 @@ namespace image{
         image::ListOfPoint2D points=DFS(start);
         int size=points.getLen();
         image::Region region(id, size, points);
+        std::cout<<"Region "<<id+1<<" -> size "<<size<<std::endl;
         return region;
     }
 
