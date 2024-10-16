@@ -24,6 +24,11 @@ namespace image {
     	int getValue(int row, int col);
 		void show();
 		ListOfRegions getRegions();
+		Region regionMaker(int x, int y, int id);
+		ListOfPoint2D DFS(image::Point2D start);
+		bool getVisited(int row, int col);
+		void visitPixel(int row, int col);
+		Point2D DFSfindNeighbor(image::Poit2D *current);
         virtual ~Image(); 
 		static Image* readImage(std::string &path);        
 	};
