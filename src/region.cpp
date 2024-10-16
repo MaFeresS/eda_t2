@@ -13,6 +13,10 @@ namespace image{
 
     }
 
+    Region::Region(int id, int size, ListOfPoint2D points): id(id), size(size), points(points){
+
+    }
+
     void Region::showRegion(){
 
     }

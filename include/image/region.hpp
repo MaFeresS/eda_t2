@@ -11,6 +11,7 @@ namespace image {
 		ListOfPoint2D points;	
 	public:
 		Region();
+		Region(int id, int size, ListOfPoint2D points);
 		void showRegion();
         virtual ~Region(); 		
 	};

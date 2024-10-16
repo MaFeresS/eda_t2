@@ -5,7 +5,7 @@
 
 namespace image{
     ListOfPoint2D::ListOfPoint2D(): Node(nullptr){
-
+        len=0;
     }
 	NodePoint2D *ListOfPoint2D::getNode(){
         return Node;
@@ -19,6 +19,7 @@ namespace image{
             node ->setPointer(Node);
             Node = node;
         }
+        len++;
     }
     void ListOfPoint2D::insertLastNode(Point2D Point_){
         NodePoint2D * node = new NodePoint2D(Point_,nullptr);
@@ -32,7 +33,13 @@ namespace image{
             }
             currentNode ->setPointer(node);
         }
+        len++;
     }
+
+    int ListOfPoint2D::getLen(){
+        return len;
+    }
+
     ListOfPoint2D::~ListOfPoint2D(){
         
     }

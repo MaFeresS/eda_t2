@@ -1,5 +1,6 @@
 #include "image/image.hpp"
 #include "listofpoint2d.hpp"
+#include "listofregion.hpp"
 #include <fstream>
 #include <iostream>
 #include <cassert>
@@ -102,6 +103,28 @@ namespace image{
         return im;
     }
 
+    image::ListOfRegion regionSearcher(){
+        image::ListOfRegion regions();
+        int id=0;
+        for(int i=0;i<height;i++){
+            for(int j=0;j<width;j++){
+                if((!getVisited(i,j)) && image::getValue(i,j)==1){
+                    regions.insertLast(regionMaker(j,i,id));
+                    id++;
+                }
+            }
+        }
+        return 
+    }
+
+    image::Region regionMaker(int x, int y, int id){
+        image::Point2D start(x,y);
+        image::ListOfPoint2D points=DFS(start);
+        int size=points.getLen();
+        image::Region region(id, size, points);
+        return region;
+    }
+
     image::ListOfPoint2D DFS(image::Point2D start){
         image::NodePoint2D startNode(start,nullptr);
         image::ListOfPoint2D pointsInRegion(&startNode);
@@ -120,7 +143,7 @@ namespace image{
                 pointStack.push(neighbor);
                 visitPixel(neighbor.getY(),neighbor.getX());
                 //add Node to listofPoin2D as Point2D
-                insertLastNode(neighbor);
+                pointsInRegion.insertLastNode(neighbor);
             }
         }
         return pointsInRegion;
