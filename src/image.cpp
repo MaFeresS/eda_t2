@@ -103,7 +103,7 @@ namespace image{
         return im;
     }
 
-    image::ListOfRegion regionSearcher(){
+    image::ListOfRegion getRegions(){
         image::ListOfRegion regions();
         int id=0;
         for(int i=0;i<height;i++){
