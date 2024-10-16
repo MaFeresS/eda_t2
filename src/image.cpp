@@ -195,5 +195,21 @@ namespace image{
         return neighbor;
     }
 
+    void Image::showRegion(image::Region region){
+        std::cout<<"region "<<region.getID()<<std::endl<<"-----------"<<std::endl;
+        for(int i=0;i<height;i++){
+            for(int j=0;j<width;j++){
+                if(region.isPart(j,i)){
+                    std::cout<<1;
+                }
+                else{
+                    std::cout<<0;
+                }
+            }
+            std::cout<<std::endl;
+        }
+        std::cout<<std::endl;
+    }
+
 }
 

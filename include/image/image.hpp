@@ -19,7 +19,7 @@ namespace image {
 	public:
 		Image();
 		Image(int w, int h);
-		Image(int w, int h, uchar* _data, bool* visited);
+		Image(int w, int h, uchar* _data);
 		void threshold(); 
     	int getValue(int row, int col);
 		void show();
@@ -29,6 +29,7 @@ namespace image {
 		bool getVisited(int row, int col);
 		void visitPixel(int row, int col);
 		Point2D DFSfindNeighbor(image::Poit2D *current);
+		void showRegion(image::Region region);
         virtual ~Image(); 
 		static Image* readImage(std::string &path);        
 	};

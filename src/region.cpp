@@ -17,10 +17,25 @@ namespace image{
 
     }
 
+    int Region::getID(){
+        return id;
+    }
+
     void Region::showRegion(int height, int width){
         int display[height*width];
         std::memset(display,0,height*width);
 
+    }
+
+    bool Region::isPart(int x_, int y_){
+        NodePoint2D *Node=points.getNode();
+        while(Node!=nullptr){
+            if((*Node->getPoint2D()).getX()==x_ && (*Node->getPoint2D()).getY()==y_){
+                return true;
+            }
+            Node=*Node->getPointer();
+        }
+        return false;
     }
 
     Region::~Region(){
