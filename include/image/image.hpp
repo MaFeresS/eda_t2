@@ -25,11 +25,11 @@ namespace image {
 		void show();
 		ListOfRegion getRegions();
 		Region regionMaker(int x, int y, int id);
-		ListOfPoint2D DFS(image::Point2D start);
+		ListOfPoint2D DFS(Point2D start);
 		bool getVisited(int row, int col);
 		void visitPixel(int row, int col);
-		Point2D DFSfindNeighbor(image::Point2D *current);
-		void showRegion(image::Region region);
+		Point2D DFSfindNeighbor(Point2D current);
+		void showRegion(Region region);
         virtual ~Image(); 
 		static Image* readImage(std::string &path);        
 	};
