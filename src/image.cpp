@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cassert>
 #include <cstring>
+#include <stack>
 
 namespace image{
 
@@ -105,8 +106,8 @@ namespace image{
         return im;
     }
 
-    image::ListOfRegion Image::getRegions(){
-        image::ListOfRegion regions();
+    ListOfRegion Image::getRegions(){
+        ListOfRegion regions = ListOfRegion();
         int id=0;
         for(int i=0;i<height;i++){
             for(int j=0;j<width;j++){
@@ -116,25 +117,28 @@ namespace image{
                 }
             }
         }
-        return 
+        return regions;
     }
 
-    image::Region regionMaker(int x, int y, int id){
-        image::Point2D start(x,y);
-        image::ListOfPoint2D points=DFS(start);
+    Region Image::regionMaker(int x, int y, int id){
+        Point2D start(x,y);
+        ListOfPoint2D points=DFS(start);
         int size=points.getLen();
-        image::Region region(id, size, points);
+        Region region(id, size, points);
         std::cout<<"Region "<<id<<" -> size "<<size<<std::endl;
         return region;
     }
 
-    image::ListOfPoint2D DFS(image::Point2D start){
-        image::NodePoint2D startNode(start,nullptr);
-        image::ListOfPoint2D pointsInRegion(&startNode);
+    ListOfPoint2D Image::DFS(Point2D start){
+        //NodePoint2D startNode(start,nullptr);
+        //ListOfPoint2D pointsInRegion(&startNode);
+        ListOfPoint2D pointsInRegion = ListOfPoint2D();
+        pointsInRegion.insertFirstNode(start);
+
         std::stack<Point2D> pointStack;
         pointStack.push(start);
-        image::Point2D currentPoint;
-        image::Point2D neighbor;
+        Point2D currentPoint;
+        Point2D neighbor;
         int cord[2]={currentPoint.getX(),currentPoint.getY()};
         while(!pointStack.empty()){
             currentPoint=pointStack.top();
@@ -162,9 +166,9 @@ namespace image{
         visited[pos]=true;
     }
 
-    image::Point2D DFSfindNeighbor(image::Point2D current){
+    Point2D Image::DFSfindNeighbor(Point2D current){
         int cord[2]={current.getY(),current.getX()};
-        image::Point2D neighbor();
+        Point2D neighbor = Point2D();
         if((!getVisited(cord[0]-1,cord[1]-1)) && (getValue(cord[0]-1,cord[1]-1)==1)){
             neighbor.setX(cord[0]-1);
             neighbor.setY(cord[1]-1);
@@ -205,7 +209,7 @@ namespace image{
         return neighbor;
     }
 
-    void Image::showRegion(image::Region region){
+    void Image::showRegion(Region region){
         std::cout<<"region "<<region.getID()<<std::endl<<"-----------"<<std::endl;
         for(int i=0;i<height;i++){
             for(int j=0;j<width;j++){
@@ -222,4 +226,3 @@ namespace image{
     }
 
 }
-
