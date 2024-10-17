@@ -1,6 +1,7 @@
 #include "image/image.hpp"
-#include "listofpoint2d.hpp"
-#include "listofregion.hpp"
+#include "image/listofpoint2d.hpp"
+#include "image/listofregion.hpp"
+#include "image/point2D.hpp"
 #include <fstream>
 #include <iostream>
 #include <cassert>
