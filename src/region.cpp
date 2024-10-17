@@ -30,10 +30,10 @@ namespace image{
     bool Region::isPart(int x_, int y_){
         NodePoint2D *Node=points.getNode();
         while(Node!=nullptr){
-            if((*Node->getPoint2D()).getX()==x_ && (*Node->getPoint2D()).getY()==y_){
+            if((Node->getPoint2D()).getX()==x_ && (Node->getPoint2D()).getY()==y_){
                 return true;
             }
-            Node=*Node->getPointer();
+            Node=Node->getPointer();
         }
         return false;
     }
