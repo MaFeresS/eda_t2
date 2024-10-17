@@ -109,7 +109,7 @@ namespace image{
         int id=0;
         for(int i=0;i<height;i++){
             for(int j=0;j<width;j++){
-                if((!getVisited(i,j)) && image::getValue(i,j)==1){
+                if((!getVisited(i,j)) && getValue(i,j)==1){
                     regions.insertLast(regionMaker(j,i,id));
                     id++;
                 }
@@ -161,9 +161,9 @@ namespace image{
         visited[pos]=true;
     }
 
-    image::Point2D DFSfindNeighbor(image::Poit2D *current){
-        int cordCurrent[2]={current.getY(),current.getX()};
-
+    image::Point2D DFSfindNeighbor(image::Point2D current){
+        int cord[2]={current.getY(),current.getX()};
+        image::Point2D neighbor;
         if((!getVisited(cord[0]-1,cord[1]-1)) && (getValue(cord[0]-1,cord[1]-1)==1)){
             image::Point2D neighbor(cord[1]-1,cord[0]-1);
         } //check like above for all directions, if neighbor has cord (-1,-1), there is no neighbor.
