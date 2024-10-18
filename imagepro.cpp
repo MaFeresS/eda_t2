@@ -26,7 +26,9 @@ int main(int nargs, char** vargs){
         std::vector<std::string> TheBetterInput;
         std::stringstream check(input);
         std::string temp;
-        std::cout<<"Hello World1"<<std::endl;
+
+        //std::cout<<"Hello World1"<<std::endl;
+
         while(getline(check,temp,' ')){
             TheBetterInput.push_back(temp);
         }
@@ -81,7 +83,7 @@ int main(int nargs, char** vargs){
             }
         }
         else{
-            std::cout<<"Hello World7"<<std::endl;
+            
         }
     }
 }
