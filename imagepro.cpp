@@ -37,6 +37,10 @@ int main(int nargs, char** vargs){
         else if(TheBetterInput.size()>1){
             if(TheBetterInput[2].compare("read")==0){
                 std::cout<<"Hello World3"<<std::endl;
+                std::string filename(TheBetterInput[3]);
+                image::Image* im = nullptr;
+                im = image::Image::readImage(filename);
+                im->show();
             }
             else if(TheBetterInput[0].compare("show")==0){
                 std::cout<<"Hello World4"<<std::endl;
