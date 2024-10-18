@@ -1,7 +1,7 @@
 /*
  Class ListOfPoint2D
 */
-#include "nodepoint2d.hpp"
+#include "image/nodepoint2d.hpp"
 
 namespace image {
 	class ListOfPoint2D{

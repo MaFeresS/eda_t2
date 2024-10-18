@@ -1,7 +1,7 @@
 /**
  * Class Image
  */
-#include "listofregion.hpp"
+#include "image/listofregion.hpp"
 #include <string>
 
 namespace image {

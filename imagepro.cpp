@@ -14,38 +14,45 @@ int main(int nargs, char** vargs){
     im = image::Image::readImage(filename);
     im->show();
     return 0;*/
-    std::string input;
     //std::cout<<'Bieeeenvenidos al Himalaya!'<<std::endl;
-    std::cout<<'Bienvenido a ImagePro'<<std::endl;
+    std::cout<<"Bienvenido a ImagePro"<<std::endl;
     while(true){
-        std::vector<std::string> TheBetterInput;
-        std::stringstream checks(input);
-        std::string temp;
+        std::string input;
 
-        std::cout<<'>> '<<std::endl;
-        std::cin>>input;
+        std::cout<<">> ";
+        getline(std::cin,input);
         std::cout<<std::endl;
-
-        while(getline(checks,temp,' ')){
+        std::vector<std::string> TheBetterInput;
+        std::stringstream check(input);
+        std::string temp;
+        std::cout<<"Hello World1"<<std::endl;
+        while(getline(check,temp,' ')){
             TheBetterInput.push_back(temp);
         }
-        if(input.find('exit')){
+        //std::cout<<TheBetterInput.size()<<std::endl;
+        if(TheBetterInput[0].compare("exit")==0){
+            std::cout<<TheBetterInput[0]<<std::endl;
             break;
         }
-        else if(TheBetterInput[2]=='read'){
+        else if(TheBetterInput.size()>1){
+            if(TheBetterInput[2].compare("read")==0){
+                std::cout<<"Hello World3"<<std::endl;
+            }
+            else if(TheBetterInput[0].compare("show")==0){
+                std::cout<<"Hello World4"<<std::endl;
+            }
+            else if(TheBetterInput[0].compare("getRegions")==0){
+                std::cout<<"Hello World5"<<std::endl;
+            }
+            else if(TheBetterInput[0].compare("showRegion")==0){
+                std::cout<<"Hello World6"<<std::endl;
+            }
+            else{
 
-        }
-        else if(input.find('show ')){
-
-        }
-        else if(input.find('getRegions ')){
-
-        }
-        else if(input.find('showRegion ')){
-
+            }
         }
         else{
-            continue;
+            std::cout<<"Hello World7"<<std::endl;
         }
     }
 }
