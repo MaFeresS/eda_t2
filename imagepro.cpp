@@ -63,7 +63,9 @@ int main(int nargs, char** vargs){
                         im->showRegion(regi);
                         break;
                     }
-                    nodereg = nodereg->getNext();
+                    else{
+                        nodereg = nodereg->getNext();
+                    }
                 }
             }
             else if(TheBetterInput[2].compare("read")==0){
