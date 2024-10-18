@@ -5,7 +5,7 @@
 namespace image {
 
     ListOfRegion::ListOfRegion(): head(nullptr){
-        
+        length = 0;
     }
 
     void ListOfRegion::insertFirst(Region reg){
@@ -31,6 +31,15 @@ namespace image {
             }
             currentNode ->setNext(node);
         }
+        length++;
+    }
+
+    int ListOfRegion::getLengthRegion(){
+        return length;
+    }
+
+    NodeRegion *ListOfRegion::gethead(){
+        return head;
     }
 
     ListOfRegion::~ListOfRegion(){

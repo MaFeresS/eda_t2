@@ -21,6 +21,10 @@ namespace image{
         return id;
     }
 
+    int Region::getsize(){
+        return size;
+    }
+
     void Region::showRegion(int height, int width){
         int display[height*width];
         std::memset(display,0,height*width);
