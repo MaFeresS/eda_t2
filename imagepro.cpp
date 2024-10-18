@@ -60,8 +60,10 @@ int main(int nargs, char** vargs){
                 while(nodereg->getNext()!=nullptr){
                     image::Region regi =nodereg->getRegion();
                     if(regi.getID() == stoi(TheBetterInput[2])){
-                        //regi.showRegion(height,width); //get height and width
+                        im->showRegion(regi);
+                        break;
                     }
+                    nodereg = nodereg->getNext();
                 }
             }
             else if(TheBetterInput[2].compare("read")==0){
