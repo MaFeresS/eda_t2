@@ -183,7 +183,7 @@ namespace image{
         int cord[2]={current.getY(),current.getX()};
         Point2D neighbor;
 
-        std::cout<<"visited list: "<<visited<<std::endl;
+        //std::cout<<"visited list: "<<visited<<std::endl;
         if(checkIfNeighbor(cord[0]-1,cord[1]-1)){
             neighbor.setX(cord[0]-1);
             neighbor.setY(cord[1]-1);
@@ -227,8 +227,8 @@ namespace image{
     bool Image::checkIfNeighbor(int y, int x){
         if(0<=x && x<=width && 0<=y && y<=height){
             //std::cout<<"in check"<<std::endl;
-            //std::cout<<"visited: "<<!getVisited(x,y)<<std::endl;
-            //std::cout<<"value: "<<getValue(x,y)<<std::endl;
+            std::cout<<"visited: "<<!getVisited(x,y)<<std::endl;
+            std::cout<<"value: "<<getValue(x,y)<<std::endl;
             if((!getVisited(y,x)) && (getValue(y,x)==1)){
                 return true;
             }
