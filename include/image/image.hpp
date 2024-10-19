@@ -31,6 +31,7 @@ namespace image {
 		void visitPixel(int row, int col);
 		Point2D DFSfindNeighbor(Point2D current);
 		void showRegion(Region region);
+		bool checkIfNeighbor(int x, int y);
         virtual ~Image(); 
 		static Image* readImage(std::string &path);        
 	};
