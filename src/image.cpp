@@ -181,36 +181,37 @@ namespace image{
 
     Point2D Image::DFSfindNeighbor(Point2D current){
         int cord[2]={current.getX(),current.getY()};
-        Point2D neighbor = Point2D();
-        if((!getVisited(cord[0]-1,cord[1]-1)) && (getValue(cord[0]-1,cord[1]-1)==1)){
+        Point2D neighbor = Point2D();;
+
+        if(checkIfNeighbor(cord[0]-1,cord[1]-1)){
             neighbor.setX(cord[0]-1);
             neighbor.setY(cord[1]-1);
         } //check like above for all directions, if neighbor has cord (-1,-1), there is no neighbor.
-        else if((!getVisited(cord[0]-1,cord[1])) && (getValue(cord[0]-1,cord[1])==1)){
+        else if(checkIfNeighbor(cord[0]-1,cord[1])){
             neighbor.setX(cord[0]-1);
             neighbor.setY(cord[1]);
         }
-        else if((!getVisited(cord[0]-1,cord[1]+1)) && (getValue(cord[0]-1,cord[1]+1)==1)){
+        else if(checkIfNeighbor(cord[0]-1,cord[1]+1)){
             neighbor.setX(cord[0]-1);
             neighbor.setY(cord[1]+1);
         }
-        else if((!getVisited(cord[0]+1,cord[1]-1)) && (getValue(cord[0]+1,cord[1]-1)==1)){
+        else if(checkIfNeighbor(cord[0]+1,cord[1]-1)){
             neighbor.setX(cord[0]+1);
             neighbor.setY(cord[1]-1);
         }
-        else if((!getVisited(cord[0]+1,cord[1])) && (getValue(cord[0]+1,cord[1])==1)){
+        else if(checkIfNeighbor(cord[0]+1,cord[1])){
             neighbor.setX(cord[0]+1);
             neighbor.setY(cord[1]);
         }
-        else if((!getVisited(cord[0]+1,cord[1]+1)) && (getValue(cord[0]+1,cord[1]+1)==1)){
+        else if(checkIfNeighbor(cord[0]+1,cord[1]+1)){
             neighbor.setX(cord[0]+1);
             neighbor.setY(cord[1]+1);
         }
-        else if((!getVisited(cord[0],cord[1]-1)) && (getValue(cord[0],cord[1]-1)==1)){
+        else if(checkIfNeighbor(cord[0],cord[1]-1)){
             neighbor.setX(cord[0]);
             neighbor.setY(cord[1]-1);
         }
-        else if((!getVisited(cord[0],cord[1]+1)) && (getValue(cord[0],cord[1]+1)==1)){
+        else if(checkIfNeighbor(cord[0],cord[1]+1)){
             neighbor.setX(cord[0]);
             neighbor.setY(cord[1]+1);
         }
@@ -220,6 +221,19 @@ namespace image{
             neighbor.setY(-1);
         }
         return neighbor;
+    }
+
+    bool Image::checkIfNeighbor(int x, int y){
+        if(0<=x && x<=width && 0<=y && y<=height){
+            std::cout<<"in check"<<std::endl;
+            if((!getVisited(x,y)) && (getValue(x,y)==1)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        return false;
     }
 
     void Image::showRegion(Region region){
