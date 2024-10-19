@@ -117,9 +117,9 @@ namespace image{
         int id=0;
         for(int i=0;i<height;i++){
             for(int j=0;j<width;j++){;
-                if((!getVisited(j,i)) && getValue(j,i)==1){
+                if((!getVisited(i,j)) && getValue(i,j)==1){
                     std::cout<<"get4"<<std::endl;
-                    regions.insertLast(regionMaker(j,i,id));
+                    regions.insertLast(regionMaker(i,j,id));
                     id++;
                 }
             }
@@ -127,9 +127,9 @@ namespace image{
         return regions;
     }
 
-    Region Image::regionMaker(int x, int y, int id){
+    Region Image::regionMaker(int i, int j, int id){
         std::cout<<"regMake"<<std::endl;
-        Point2D start(x,y);
+        Point2D start(i,j);
         ListOfPoint2D points=DFS(start);
         std::cout<<"DFS made"<<std::endl;
         int size=points.getLen();
@@ -152,14 +152,14 @@ namespace image{
             currentPoint=pointStack.top();
             neighbor=DFSfindNeighbor(currentPoint);
             //std::cout<<pointStack.size()<<std::endl;
-            if(neighbor.getY()==-1 && neighbor.getX()==-1){
+            if(neighbor.getX()==-1 && neighbor.getY()==-1){
                 std::cout<<"pop"<<std::endl;
                 pointStack.pop();
             }
             else{
                 //std::cout<<"push"<<std::endl;
                 pointStack.push(neighbor);
-                visitPixel(neighbor.getY(),neighbor.getX());
+                visitPixel(neighbor.getX(),neighbor.getY());
                 //add Node to listofPoin2D as Point2D
                 pointsInRegion.insertLastNode(neighbor);
             }
@@ -180,7 +180,7 @@ namespace image{
     }
 
     Point2D Image::DFSfindNeighbor(Point2D current){
-        int cord[2]={current.getY(),current.getX()};
+        int cord[2]={current.getX(),current.getY()};
         Point2D neighbor;
 
         //std::cout<<"visited list: "<<visited<<std::endl;
@@ -189,32 +189,32 @@ namespace image{
             neighbor.setY(cord[1]-1);
         } //check like above for all directions, if neighbor has cord (-1,-1), there is no neighbor.
         else if(checkIfNeighbor(cord[0]-1,cord[1])){
-            neighbor.setX(cord[0]);
-            neighbor.setY(cord[1]-1);
+            neighbor.setX(cord[0]-1);
+            neighbor.setY(cord[1]);
         }
         else if(checkIfNeighbor(cord[0]-1,cord[1]+1)){
-            neighbor.setX(cord[0]+1);
-            neighbor.setY(cord[1]-1);
-        }
-        else if(checkIfNeighbor(cord[0]+1,cord[1]-1)){
             neighbor.setX(cord[0]-1);
             neighbor.setY(cord[1]+1);
         }
+        else if(checkIfNeighbor(cord[0]+1,cord[1]-1)){
+            neighbor.setX(cord[0]+1);
+            neighbor.setY(cord[1]-1);
+        }
         else if(checkIfNeighbor(cord[0]+1,cord[1])){
-            neighbor.setX(cord[0]);
-            neighbor.setY(cord[1]+1);
+            neighbor.setX(cord[0]+1);
+            neighbor.setY(cord[1]);
         }
         else if(checkIfNeighbor(cord[0]+1,cord[1]+1)){
             neighbor.setX(cord[0]+1);
             neighbor.setY(cord[1]+1);
         }
         else if(checkIfNeighbor(cord[0],cord[1]-1)){
-            neighbor.setX(cord[0]-1);
-            neighbor.setY(cord[1]);
+            neighbor.setX(cord[0]);
+            neighbor.setY(cord[1]-1);
         }
         else if(checkIfNeighbor(cord[0],cord[1]+1)){
-            neighbor.setX(cord[0]+1);
-            neighbor.setY(cord[1]);
+            neighbor.setX(cord[0]);
+            neighbor.setY(cord[1]+1);
         }
         else{
             std::cout<<"no neighbor"<<std::endl;
@@ -224,12 +224,12 @@ namespace image{
         return neighbor;
     }
 
-    bool Image::checkIfNeighbor(int y, int x){
-        if(0<=x && x<=width && 0<=y && y<=height){
+    bool Image::checkIfNeighbor(int i, int j){
+        if(0<=j && j<=width && 0<=i && i<=height){
             //std::cout<<"in check"<<std::endl;
-            std::cout<<"visited: "<<!getVisited(x,y)<<std::endl;
+            std::cout<<"visited: "<<!getVisited(i,j)<<std::endl;
             std::cout<<"value: "<<getValue(x,y)<<std::endl;
-            if(!(!getVisited(y,x)) && (getValue(y,x)==1)){
+            if(!(!getVisited(i,j)) && (getValue(i,j)==1)){
                 std::cout<<"in nei"<<std::endl;
                 return true;
             }
