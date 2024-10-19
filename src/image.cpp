@@ -226,6 +226,8 @@ namespace image{
     bool Image::checkIfNeighbor(int x, int y){
         if(0<=x && x<=width && 0<=y && y<=height){
             std::cout<<"in check"<<std::endl;
+            std::cout<<"visited: "<<!getVisited(x,y)<<std::endl;
+            std::cout<<"value: "<<getValue(x,y)<<std::endl;
             if((!getVisited(x,y)) && (getValue(x,y)==1)){
                 return true;
             }
