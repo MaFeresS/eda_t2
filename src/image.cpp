@@ -229,7 +229,7 @@ namespace image{
             //std::cout<<"in check"<<std::endl;
             std::cout<<"visited: "<<!getVisited(x,y)<<std::endl;
             std::cout<<"value: "<<getValue(x,y)<<std::endl;
-            if((!getVisited(y,x)) && (getValue(y,x)==1)){
+            if(!(!getVisited(y,x)) && (getValue(y,x)==1)){
                 std::cout<<"in nei"<<std::endl;
                 return true;
             }
