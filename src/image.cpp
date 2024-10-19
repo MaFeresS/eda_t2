@@ -117,7 +117,7 @@ namespace image{
         int id=0;
         for(int i=0;i<height;i++){
             for(int j=0;j<width;j++){;
-                if((!getVisited(i,j)) && getValue(i,j)==1){
+                if((!getVisited(j,i)) && getValue(j,i)==1){
                     std::cout<<"get4"<<std::endl;
                     regions.insertLast(regionMaker(j,i,id));
                     id++;
@@ -152,14 +152,14 @@ namespace image{
             currentPoint=pointStack.top();
             neighbor=DFSfindNeighbor(currentPoint);
             //std::cout<<pointStack.size()<<std::endl;
-            if(neighbor.getX()==-1 && neighbor.getY()==-1){
+            if(neighbor.getY()==-1 && neighbor.getX()==-1){
                 std::cout<<"pop"<<std::endl;
                 pointStack.pop();
             }
             else{
                 //std::cout<<"push"<<std::endl;
                 pointStack.push(neighbor);
-                visitPixel(neighbor.getX(),neighbor.getY());
+                visitPixel(neighbor.getY(),neighbor.getX());
                 //add Node to listofPoin2D as Point2D
                 pointsInRegion.insertLastNode(neighbor);
             }
@@ -180,7 +180,7 @@ namespace image{
     }
 
     Point2D Image::DFSfindNeighbor(Point2D current){
-        int cord[2]={current.getX(),current.getY()};
+        int cord[2]={current.getY(),current.getX()};
         Point2D neighbor;
 
         std::cout<<"visited list: "<<visited<<std::endl;
@@ -189,32 +189,32 @@ namespace image{
             neighbor.setY(cord[1]-1);
         } //check like above for all directions, if neighbor has cord (-1,-1), there is no neighbor.
         else if(checkIfNeighbor(cord[0]-1,cord[1])){
-            neighbor.setX(cord[0]-1);
-            neighbor.setY(cord[1]);
+            neighbor.setX(cord[0]);
+            neighbor.setY(cord[1]-1);
         }
         else if(checkIfNeighbor(cord[0]-1,cord[1]+1)){
-            neighbor.setX(cord[0]-1);
-            neighbor.setY(cord[1]+1);
-        }
-        else if(checkIfNeighbor(cord[0]+1,cord[1]-1)){
             neighbor.setX(cord[0]+1);
             neighbor.setY(cord[1]-1);
         }
+        else if(checkIfNeighbor(cord[0]+1,cord[1]-1)){
+            neighbor.setX(cord[0]-1);
+            neighbor.setY(cord[1]+1);
+        }
         else if(checkIfNeighbor(cord[0]+1,cord[1])){
-            neighbor.setX(cord[0]+1);
-            neighbor.setY(cord[1]);
+            neighbor.setX(cord[0]);
+            neighbor.setY(cord[1]+1);
         }
         else if(checkIfNeighbor(cord[0]+1,cord[1]+1)){
             neighbor.setX(cord[0]+1);
             neighbor.setY(cord[1]+1);
         }
         else if(checkIfNeighbor(cord[0],cord[1]-1)){
-            neighbor.setX(cord[0]);
-            neighbor.setY(cord[1]-1);
+            neighbor.setX(cord[0]-1);
+            neighbor.setY(cord[1]);
         }
         else if(checkIfNeighbor(cord[0],cord[1]+1)){
-            neighbor.setX(cord[0]);
-            neighbor.setY(cord[1]+1);
+            neighbor.setX(cord[0]+1);
+            neighbor.setY(cord[1]);
         }
         else{
             std::cout<<"no neighbor"<<std::endl;
@@ -224,12 +224,12 @@ namespace image{
         return neighbor;
     }
 
-    bool Image::checkIfNeighbor(int x, int y){
+    bool Image::checkIfNeighbor(int y, int x){
         if(0<=x && x<=width && 0<=y && y<=height){
             //std::cout<<"in check"<<std::endl;
             //std::cout<<"visited: "<<!getVisited(x,y)<<std::endl;
             //std::cout<<"value: "<<getValue(x,y)<<std::endl;
-            if((!getVisited(x,y)) && (getValue(x,y)==1)){
+            if((!getVisited(y,x)) && (getValue(y,x)==1)){
                 return true;
             }
             else{
