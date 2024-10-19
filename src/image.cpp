@@ -148,7 +148,6 @@ namespace image{
         pointStack.push(start);
         Point2D currentPoint;
         Point2D neighbor;
-        int cord[2]={currentPoint.getX(),currentPoint.getY()};
         while(!pointStack.empty()){
             currentPoint=pointStack.top();
             neighbor=DFSfindNeighbor(currentPoint);
@@ -171,6 +170,7 @@ namespace image{
 
     bool Image::getVisited(int row, int col){
         int pos = row*width + col;
+        //std::cout<<"; position "<<pos;
         return visited[pos];
     }
 
@@ -181,7 +181,7 @@ namespace image{
 
     Point2D Image::DFSfindNeighbor(Point2D current){
         int cord[2]={current.getX(),current.getY()};
-        Point2D neighbor = Point2D();;
+        Point2D neighbor;
 
         std::cout<<"visited list: "<<visited<<std::endl;
         if(checkIfNeighbor(cord[0]-1,cord[1]-1)){
@@ -226,9 +226,9 @@ namespace image{
 
     bool Image::checkIfNeighbor(int x, int y){
         if(0<=x && x<=width && 0<=y && y<=height){
-            std::cout<<"in check"<<std::endl;
-            std::cout<<"visited: "<<!getVisited(x,y)<<std::endl;
-            std::cout<<"value: "<<getValue(x,y)<<std::endl;
+            //std::cout<<"in check"<<std::endl;
+            //std::cout<<"visited: "<<!getVisited(x,y)<<std::endl;
+            //std::cout<<"value: "<<getValue(x,y)<<std::endl;
             if((!getVisited(x,y)) && (getValue(x,y)==1)){
                 return true;
             }
