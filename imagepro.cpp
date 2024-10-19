@@ -79,7 +79,7 @@ int main(int nargs, char** vargs){
             else if(TheBetterInput[2].compare("read")==0){
                 //std::cout<<"Hello World3"<<std::endl;
                 std::string filename(TheBetterInput[3]);
-                image::Image* im = image::Image::readImage(filename);nullptr;
+                image::Image* im = image::Image::readImage(filename);
                 //im = image::Image::readImage(filename);
                 imageDic[TheBetterInput[0]]=*im;
                 //codigo que inserte TheBetterInput[0] y im en un vector? clase? nodo?

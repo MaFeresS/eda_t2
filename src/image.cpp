@@ -35,14 +35,15 @@ namespace image{
     }
 
     void Image::makeVisited(){
-        threshold();
         visited=new bool[width*height];
         std::memset(visited,false,width*height);
         //std::cout<<visited[0]<<std::endl;
     }
     
     int Image::getValue(int row, int col){
+        //std::cout<<"getVAlue"<<std::endl;
         int pos = row*width + col;
+        //std::cout<<data[pos];
         return static_cast<int>(data[pos]);
     }
 
@@ -127,6 +128,7 @@ namespace image{
     }
 
     Region Image::regionMaker(int x, int y, int id){
+        std::cout<<"regMake"<<std::endl;
         Point2D start(x,y);
         ListOfPoint2D points=DFS(start);
         int size=points.getLen();
