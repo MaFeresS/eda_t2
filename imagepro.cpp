@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 #include<bits/stdc++.h>
 
 
@@ -16,6 +17,7 @@ int main(int nargs, char** vargs){
     return 0;*/
     //std::cout<<'Bieeeenvenidos al Himalaya!'<<std::endl;
     //std::vector<std::string,image::Image*> imagelist;
+    std::map<std::string, image::Image> imageDic;
     std::cout<<"Bienvenido a ImagePro"<<std::endl;
     while(true){
         std::string input;
@@ -38,13 +40,13 @@ int main(int nargs, char** vargs){
             break;
         }
         else if(TheBetterInput.size()>1){
-            if(TheBetterInput[0].compare("show")==0){
+            if(TheBetterInput[0].compare("show")==0 && !imageDic.empty()){
                 //std::cout<<"Hello World4"<<std::endl;
-                image::Image* im ; //im = puntero de imagen ya leida, recogida con el TheBetterInput[1]
+                image::Image* im=&(imageDic.at(TheBetterInput[1])); //im = puntero de imagen ya leida, recogida con el TheBetterInput[1]
                 im->show();
             }
-            else if(TheBetterInput[0].compare("getRegions")==0){
-                image::Image* im ; //im = imagen recogida con TheBetterInput[1]
+            else if(TheBetterInput[0].compare("getRegions")==0 && !imageDic.empty()){
+                image::Image* im=&(imageDic.at(TheBetterInput[1])); //im = imagen recogida con TheBetterInput[1]
                 image::ListOfRegion regions = im->getRegions();
                 std::cout<<"La imagen de "<<TheBetterInput[1]<<" tiene "<<regions.getLengthRegion()<<" regiones"<<std::endl;
                 image::NodeRegion* nodereg = regions.gethead();
@@ -54,10 +56,10 @@ int main(int nargs, char** vargs){
                     image::NodeRegion* nodereg = nodereg->getNext();
                 }
             }
-            else if(TheBetterInput[0].compare("showRegion")==0){
+            else if(TheBetterInput[0].compare("showRegion")==0 && !imageDic.empty()){
                 //TheBetterInput[1]=nombre imagen; THeBetterInput[2]=indice región
-                image::Image* im ; //get image
-                image::ListOfRegion regions = im->getRegions();
+                image::Image* im=&(imageDic.at(TheBetterInput[1])); //get image
+                image::ListOfRegion regions = im->getRegions(); //podriamos hacer esto solo si detectamos que las regiones no fueron creadas, eficiencia, no necesidad.
                 image::NodeRegion* nodereg = regions.gethead();
                 while(nodereg->getNext()!=nullptr){
                     image::Region regi =nodereg->getRegion();
@@ -75,11 +77,12 @@ int main(int nargs, char** vargs){
                 std::string filename(TheBetterInput[3]);
                 image::Image* im = nullptr;
                 im = image::Image::readImage(filename);
+                imageDic[TheBetterInput[0]]=im;
                 //codigo que inserte TheBetterInput[0] y im en un vector? clase? nodo?
 
             }
             else{
-
+                std::cout<<"Comando invalido o falta de imagen."<<std::endl;
             }
         }
         else{
