@@ -224,7 +224,7 @@ namespace image{
         return neighbor;
     }
 
-    bool Image::checkIfNeighbor(int j, int i){
+    bool Image::checkIfNeighbor(int i, int j){
         if(0<=j && j<=width && 0<=i && i<=height){
             //std::cout<<"in check"<<std::endl;
             std::cout<<"visited: "<<!getVisited(i,j)<<std::endl;
