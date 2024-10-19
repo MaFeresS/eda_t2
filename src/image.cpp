@@ -119,7 +119,7 @@ namespace image{
             for(int j=0;j<width;j++){;
                 if((!getVisited(i,j)) && getValue(i,j)==1){
                     std::cout<<"get4"<<std::endl;
-                    regions.insertLast(regionMaker(i,j,id));
+                    regions.insertLast(regionMaker(j,i,id));
                     id++;
                 }
             }
@@ -228,8 +228,8 @@ namespace image{
         if(0<=j && j<=width && 0<=i && i<=height){
             //std::cout<<"in check"<<std::endl;
             std::cout<<"visited: "<<!getVisited(i,j)<<std::endl;
-            std::cout<<"value: "<<getValue(x,y)<<std::endl;
-            if(!(!getVisited(i,j)) && (getValue(i,j)==1)){
+            std::cout<<"value: "<<getValue(i,j)<<std::endl;
+            if((!getVisited(i,j)) && (getValue(i,j)==1)){
                 std::cout<<"in nei"<<std::endl;
                 return true;
             }
