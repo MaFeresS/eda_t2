@@ -183,6 +183,7 @@ namespace image{
         int cord[2]={current.getX(),current.getY()};
         Point2D neighbor = Point2D();;
 
+        std::cout<<"visited list: "<<visited<<std::endl;
         if(checkIfNeighbor(cord[0]-1,cord[1]-1)){
             neighbor.setX(cord[0]-1);
             neighbor.setY(cord[1]-1);
