@@ -21,6 +21,7 @@ namespace image {
 		Image(int w, int h);
 		Image(int w, int h, uchar* _data);
 		void threshold(); 
+		void makeVisited();
     	int getValue(int row, int col);
 		void show();
 		ListOfRegion getRegions();

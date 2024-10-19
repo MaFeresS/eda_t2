@@ -17,7 +17,7 @@ namespace image{
 
     Image::Image(int w, int h, uchar* _data): width(w), height(h), th_value(120), data(_data){
         threshold();
-        bool* visited=new bool[w*h];
+        visited=new bool[w*h];
         std::memset(visited,false,w*h); //setup of visited array, unique per image
     }
 
@@ -32,6 +32,13 @@ namespace image{
                 }
             }
         }
+    }
+
+    void Image::makeVisited(){
+        threshold();
+        visited=new bool[width*height];
+        std::memset(visited,false,width*height);
+        //std::cout<<visited[0]<<std::endl;
     }
     
     int Image::getValue(int row, int col){
@@ -105,10 +112,12 @@ namespace image{
 
     ListOfRegion Image::getRegions(){
         ListOfRegion regions = ListOfRegion();
+        makeVisited();
         int id=0;
         for(int i=0;i<height;i++){
-            for(int j=0;j<width;j++){
+            for(int j=0;j<width;j++){;
                 if((!getVisited(i,j)) && getValue(i,j)==1){
+                    std::cout<<"get4"<<std::endl;
                     regions.insertLast(regionMaker(j,i,id));
                     id++;
                 }

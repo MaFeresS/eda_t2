@@ -46,10 +46,14 @@ int main(int nargs, char** vargs){
                 im->show();
             }
             else if(TheBetterInput[0].compare("getRegions")==0 && !imageDic.empty()){
+                std::cout<<"gR1"<<std::endl;
                 image::Image* im=&(imageDic.at(TheBetterInput[1])); //im = imagen recogida con TheBetterInput[1]
+                std::cout<<"gR2"<<std::endl;
                 image::ListOfRegion regions = im->getRegions();
+                std::cout<<"gR3"<<std::endl;
                 std::cout<<"La imagen de "<<TheBetterInput[1]<<" tiene "<<regions.getLengthRegion()<<" regiones"<<std::endl;
                 image::NodeRegion* nodereg = regions.gethead();
+                std::cout<<"gR4"<<std::endl;
                 for(int i=0;i<regions.getLengthRegion();i++){
                     image::Region reg = nodereg->getRegion();
                     std::cout<<"Region "<<i+1<<" -> size "<<reg.getsize()<<std::endl;
@@ -75,9 +79,9 @@ int main(int nargs, char** vargs){
             else if(TheBetterInput[2].compare("read")==0){
                 //std::cout<<"Hello World3"<<std::endl;
                 std::string filename(TheBetterInput[3]);
-                image::Image* im = nullptr;
-                im = image::Image::readImage(filename);
-                imageDic[TheBetterInput[0]]=im;
+                image::Image* im = image::Image::readImage(filename);nullptr;
+                //im = image::Image::readImage(filename);
+                imageDic[TheBetterInput[0]]=*im;
                 //codigo que inserte TheBetterInput[0] y im en un vector? clase? nodo?
 
             }
