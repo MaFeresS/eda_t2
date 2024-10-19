@@ -131,6 +131,7 @@ namespace image{
         std::cout<<"regMake"<<std::endl;
         Point2D start(x,y);
         ListOfPoint2D points=DFS(start);
+        std::cout<<"DFS made"<<std::endl;
         int size=points.getLen();
         Region region(id, size, points);
         std::cout<<"Region "<<id<<" -> size "<<size<<std::endl;
@@ -151,16 +152,20 @@ namespace image{
         while(!pointStack.empty()){
             currentPoint=pointStack.top();
             neighbor=DFSfindNeighbor(currentPoint);
+            //std::cout<<pointStack.size()<<std::endl;
             if(neighbor.getX()==-1 && neighbor.getY()==-1){
+                std::cout<<"pop"<<std::endl;
                 pointStack.pop();
             }
             else{
+                //std::cout<<"push"<<std::endl;
                 pointStack.push(neighbor);
-                visitPixel(neighbor.getY(),neighbor.getX());
+                visitPixel(neighbor.getX(),neighbor.getY());
                 //add Node to listofPoin2D as Point2D
                 pointsInRegion.insertLastNode(neighbor);
             }
         }
+        std::cout<<"stackempty"<<std::endl;
         return pointsInRegion;
     }
 
@@ -175,7 +180,7 @@ namespace image{
     }
 
     Point2D Image::DFSfindNeighbor(Point2D current){
-        int cord[2]={current.getY(),current.getX()};
+        int cord[2]={current.getX(),current.getY()};
         Point2D neighbor = Point2D();
         if((!getVisited(cord[0]-1,cord[1]-1)) && (getValue(cord[0]-1,cord[1]-1)==1)){
             neighbor.setX(cord[0]-1);
