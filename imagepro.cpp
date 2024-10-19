@@ -54,11 +54,11 @@ int main(int nargs, char** vargs){
                 std::cout<<"La imagen de "<<TheBetterInput[1]<<" tiene "<<regions.getLengthRegion()<<" regiones"<<std::endl;
                 image::NodeRegion* nodereg = regions.gethead();
                 std::cout<<"gR4"<<std::endl;
-                for(int i=0;i<regions.getLengthRegion();i++){
+                /*for(int i=0;i<regions.getLengthRegion();i++){
                     image::Region reg = nodereg->getRegion();
                     std::cout<<"Region "<<i+1<<" -> size "<<reg.getsize()<<std::endl;
                     image::NodeRegion* nodereg = nodereg->getNext();
-                }
+                }*/
             }
             else if(TheBetterInput[0].compare("showRegion")==0 && !imageDic.empty()){
                 //TheBetterInput[1]=nombre imagen; THeBetterInput[2]=indice región
