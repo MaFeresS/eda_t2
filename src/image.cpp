@@ -232,7 +232,7 @@ namespace image{
         std::cout<<"Region "<<region.getID()+1<<std::endl<<"-----------"<<std::endl;
         for(int i=0;i<height;i++){
             for(int j=0;j<width;j++){
-                if(region.isPart(j,i)){
+                if(region.isPart(i,j)){
                     std::cout<<1;
                 }
                 else{
