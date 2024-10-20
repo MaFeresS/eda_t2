@@ -1,10 +1,27 @@
 # eda_t2
 
-To compile this code access the "build" folder inside of the folder containing the source code and run "cmake .." inside it. Then run make in the same folder and exit to the folder containing the source code, run the code from there with "./build/imagepro".
-In order the commands to run from the source code folder are:
 
-> cd build
-> cmake ..
-> make
-> cd ..
-> ./build/imagepro
+Para compilar este programa, debe primero acceder a la carpeta 'build', creándola en caso de no existir. 
+>>cd build
+Si no existe:
+>> mkdir build
+>> cd build
+
+Una vez dentro de build, debe hacer correr el cmake, lo que, entre otras cosas, creará un makefile. 
+>> cmake ..
+
+Una vez finalizada la creación del makefile, debe hacer correr make, manteniendose dentro de build. 
+>> make
+
+El make compilará los archivos y creará el programa imagepro, que se deberá correr desde el repositorio base. Para esto, debe salir de build y hacer correr el programa con ./build/imagepro. 
+>> cd ..
+>> ./build/imagepro
+Este último paso es necesario para poder utilizar las imágenes guardadas en en la carpeta images.
+
+En resumen, debe realizar, en orden, los siguientes comandos en la terminal desde el directorio base del repositorio para compilar correctamente el programa:
+
+>> cd build
+>> cmake ..
+>> make
+>> cd ..
+>> ./build/imagepro
