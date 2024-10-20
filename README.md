@@ -1,6 +1,7 @@
 # eda_t2
 
-
+PASOS DE COMPILACIÓN
+--------------------
 Para compilar este programa, debe primero acceder a la carpeta 'build', creándola en caso de no existir. 
 >>cd build
 
