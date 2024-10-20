@@ -55,10 +55,10 @@ namespace image{
             for(int j = 0; j < width; j++ ){
                 //std::cout<< getValue(i,j) << " "; 
                 if (getValue(i,j) == 0) {
-                    std::cout<<" ";
+                    std::cout<<"0";
                 }
                 else{
-                    std::cout<<"*";
+                    std::cout<<"1";
                 }
             }
             std::cout<<std::endl;
@@ -118,7 +118,6 @@ namespace image{
         for(int i=0;i<height;i++){
             for(int j=0;j<width;j++){;
                 if((!getVisited(i,j)) && getValue(i,j)==1){
-                    std::cout<<"get4"<<std::endl;
                     regions.insertLast(regionMaker(j,i,id));
                     id++;
                 }
@@ -128,13 +127,10 @@ namespace image{
     }
 
     Region Image::regionMaker(int i, int j, int id){
-        std::cout<<"regMake"<<std::endl;
         Point2D start(i,j);
         ListOfPoint2D points=DFS(start);
-        std::cout<<"DFS made"<<std::endl;
         int size=points.getLen();
         Region region(id, size, points);
-        std::cout<<"Region "<<id<<" -> size "<<size<<std::endl;
         return region;
     }
 
@@ -151,26 +147,21 @@ namespace image{
         while(!pointStack.empty()){
             currentPoint=pointStack.top();
             neighbor=DFSfindNeighbor(currentPoint);
-            //std::cout<<pointStack.size()<<std::endl;
             if(neighbor.getX()==-1 && neighbor.getY()==-1){
-                std::cout<<"pop"<<std::endl;
                 pointStack.pop();
             }
             else{
-                //std::cout<<"push"<<std::endl;
                 pointStack.push(neighbor);
                 visitPixel(neighbor.getX(),neighbor.getY());
                 //add Node to listofPoin2D as Point2D
                 pointsInRegion.insertLastNode(neighbor);
             }
         }
-        std::cout<<"stackempty"<<std::endl;
         return pointsInRegion;
     }
 
     bool Image::getVisited(int row, int col){
         int pos = row*width + col;
-        //std::cout<<"; position "<<pos;
         return visited[pos];
     }
 
@@ -183,7 +174,6 @@ namespace image{
         int cord[2]={current.getX(),current.getY()};
         Point2D neighbor;
 
-        //std::cout<<"visited list: "<<visited<<std::endl;
         if(checkIfNeighbor(cord[0]-1,cord[1]-1)){
             neighbor.setX(cord[0]-1);
             neighbor.setY(cord[1]-1);
@@ -217,7 +207,6 @@ namespace image{
             neighbor.setY(cord[1]+1);
         }
         else{
-            std::cout<<"no neighbor"<<std::endl;
             neighbor.setX(-1);
             neighbor.setY(-1);
         }
@@ -227,10 +216,9 @@ namespace image{
     bool Image::checkIfNeighbor(int i, int j){
         if(0<=j && j<=width && 0<=i && i<=height){
             //std::cout<<"in check"<<std::endl;
-            std::cout<<"visited: "<<!getVisited(i,j)<<std::endl;
-            std::cout<<"value: "<<getValue(i,j)<<std::endl;
+            //std::cout<<"visited: "<<!getVisited(i,j)<<std::endl;
+            //std::cout<<"value: "<<getValue(i,j)<<std::endl;
             if((!getVisited(i,j)) && (getValue(i,j)==1)){
-                std::cout<<"in nei"<<std::endl;
                 return true;
             }
             else{
@@ -241,7 +229,7 @@ namespace image{
     }
 
     void Image::showRegion(Region region){
-        std::cout<<"region "<<region.getID()<<std::endl<<"-----------"<<std::endl;
+        std::cout<<"Region "<<region.getID()+1<<std::endl<<"-----------"<<std::endl;
         for(int i=0;i<height;i++){
             for(int j=0;j<width;j++){
                 if(region.isPart(j,i)){
