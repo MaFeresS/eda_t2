@@ -18,10 +18,11 @@ El make compilará los archivos y creará el programa imagepro, que se deberá c
 >> cd ..
 
 >> ./build/imagepro
-Este último paso es necesario para poder utilizar las imágenes guardadas en en la carpeta images.
--------------------------------------------------------------------------------------------------
-En resumen, debe realizar, en orden, los siguientes comandos en la terminal desde el directorio base del repositorio para compilar correctamente el programa:
 
+Este último paso es necesario para poder utilizar las imágenes guardadas en en la carpeta images.
+
+En resumen, debe realizar, en orden, los siguientes comandos en la terminal desde el directorio base del repositorio para compilar correctamente el programa:
+------------------------------------------------------
 >> cd build
 
 >> cmake ..
