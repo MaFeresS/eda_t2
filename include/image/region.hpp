@@ -14,7 +14,7 @@ namespace image {
 		Region(int id, int size, ListOfPoint2D points);
 		int getID();
 		int getsize();
-		void showRegion(int height, int width);
+		//void showRegion(int height, int width);
 		bool isPart(int x_, int y_);
         virtual ~Region(); 		
 	};

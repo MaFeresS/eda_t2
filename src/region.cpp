@@ -25,11 +25,11 @@ namespace image{
         return size;
     }
 
-    void Region::showRegion(int height, int width){
+    /*void Region::showRegion(int height, int width){
         int display[height*width];
         std::memset(display,0,height*width);
 
-    }
+    }*/
 
     bool Region::isPart(int x_, int y_){
         NodePoint2D *Node=points.getNode();
