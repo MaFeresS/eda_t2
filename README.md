@@ -3,6 +3,7 @@
 
 Para compilar este programa, debe primero acceder a la carpeta 'build', creándola en caso de no existir. 
 >>cd build
+
 Si no existe:
 >> mkdir build
 
